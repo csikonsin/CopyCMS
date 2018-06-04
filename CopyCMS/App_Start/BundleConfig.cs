@@ -10,9 +10,17 @@ namespace CopyCMS
 {
     public class BundleConfig
     {
+        public View.ResourceLoader ResourceLoader { get; set; }
+
+        private View.ResourceLoader resourceLoader;
+
+        public BundleConfig(View.ResourceLoader resourceLoader)
+        {
+            this.resourceLoader = resourceLoader;
+        }
 
         // Weitere Informationen zur Bündelung finden Sie unter https://go.microsoft.com/fwlink/?LinkID=303951
-        public static void RegisterBundles(BundleCollection bundles)
+        public void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/WebFormsJs").Include(
                             "~/Scripts/WebForms/WebForms.js",
@@ -36,9 +44,6 @@ namespace CopyCMS
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                             "~/Scripts/modernizr-*"));
 
-
-            View.ResourceLoader resourceLoader = ((Global)HttpContext.Current.ApplicationInstance).ContainerProvider.ApplicationContainer.Resolve<View.ResourceLoader>();
-            
             bundles.Add(new StyleBundle(resourceLoader.GetStyleBundleVirtualPath()).IncludeDirectory($"~/Content/{resourceLoader.GetTheme()}", "*.css"));
         }
     }

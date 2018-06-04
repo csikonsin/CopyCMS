@@ -13,6 +13,10 @@ namespace CopyCMS.View
 
     public class AppSettings : IAppSettings
     {
+        public AppSettings()
+        {
+        }
+
         public int WebsiteId => Convert.ToInt32(ConfigurationManager.AppSettings["WebsiteId"]);
     }
 }

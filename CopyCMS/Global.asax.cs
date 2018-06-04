@@ -26,21 +26,21 @@ namespace CopyCMS
 
         void Application_Start(object sender, EventArgs e)
         {
-           
             var builder = new ContainerBuilder();
             builder.RegisterType<WebsiteService>();
             builder.RegisterType<View.ResourceLoader>();
             builder.RegisterType<View.AppSettings>();
+            builder.RegisterType<BundleConfig>();
 
-            _containerProvider = new ContainerProvider(builder.Build());
+            var container = builder.Build();
+            _containerProvider = new ContainerProvider(container);
 
-            
             DapperExtensions.DapperExtensions.DefaultMapper = typeof(DapperExtensions.Mapper.PluralizedAutoClassMapper<>);
 
             // Code, der beim Anwendungsstart ausgeführt wird
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            container.Resolve<BundleConfig>().RegisterBundles(BundleTable.Bundles);
         }
     }
 }

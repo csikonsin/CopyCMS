@@ -9,19 +9,20 @@ namespace CopyCMS.View
 {
     public class ResourceLoader
     {
-        public Service.WebsiteService WebsiteService { get; set; }
-        public AppSettings AppSettings { get; set; }
+        private Service.WebsiteService websiteService;
+        private AppSettings appSettings;
 
-        public ResourceLoader()
+        public ResourceLoader(AppSettings appSettings, Service.WebsiteService websiteService)
         {
-
+            this.websiteService = websiteService;
+            this.appSettings = appSettings;
         }
 
         public string GetTheme()
         {
             using(var work = new UnitOfWork())
             {
-                var theme = work.WebsiteRepository.GetById(1);
+                var theme = work.WebsiteRepository.GetById(appSettings.WebsiteId);
 
                 return theme.Name;
             }
