@@ -233,10 +233,6 @@
       <Project>{6385CA2A-78F2-45A7-8AA0-628332654D91}</Project>
       <Name>CopyCMS.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CopyCMS.Domani\CopyCMS.Domain.csproj">
-      <Project>{7BA00739-DA05-4901-8CCE-DA169B3C461D}</Project>
-      <Name>CopyCMS.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CopyCMS.Service\CopyCMS.Service.csproj">
       <Project>{4FEFDBA9-7201-4966-9AB0-180D5CE2A2AF}</Project>
       <Name>CopyCMS.Service</Name>

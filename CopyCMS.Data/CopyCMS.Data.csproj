@@ -66,11 +66,5 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CopyCMS.Domani\CopyCMS.Domain.csproj">
-      <Project>{7ba00739-da05-4901-8cce-da169b3c461d}</Project>
-      <Name>CopyCMS.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
