@@ -146,7 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\test\Default.ascx" />
-    <Content Include="Content\test\Site.css" />
+    <Content Include="Content\test\reset.css" />
+    <Content Include="Content\test\content.css" />
     <Content Include="Content\test\favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -187,7 +188,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\ResourceLoader.cs" />
+    <Compile Include="Code\AppSettings.cs" />
+    <Compile Include="Code\ResourceLoader.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Content\test\Default.ascx.cs">
@@ -232,6 +234,10 @@
     <ProjectReference Include="..\CopyCMS.Data\CopyCMS.Data.csproj">
       <Project>{6385CA2A-78F2-45A7-8AA0-628332654D91}</Project>
       <Name>CopyCMS.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CopyCMS.Domain\CopyCMS.Domain.csproj">
+      <Project>{7ba00739-da05-4901-8cce-da169b3c461d}</Project>
+      <Name>CopyCMS.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\CopyCMS.Service\CopyCMS.Service.csproj">
       <Project>{4FEFDBA9-7201-4966-9AB0-180D5CE2A2AF}</Project>

@@ -10,11 +10,13 @@ namespace CopyCMS
 {
     public partial class Default : Page
     {
-        public ResourceLoader Res { get; set;  }
+        public View.ResourceLoader Res { get; set;  }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             phDefault.Controls.Add(Res.LoadDefaultPage());
+
+            bundle.Path = Res.GetStyleBundleVirtualPath();
         }
     }
 }

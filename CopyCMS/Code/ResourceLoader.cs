@@ -5,11 +5,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 
-namespace CopyCMS
+namespace CopyCMS.View
 {
     public class ResourceLoader
     {
         public Service.WebsiteService WebsiteService { get; set; }
+        public AppSettings AppSettings { get; set; }
 
         public ResourceLoader()
         {
@@ -26,12 +27,18 @@ namespace CopyCMS
             }
         }
 
+        public string GetStyleBundleVirtualPath()
+        {
+            var theme = GetTheme();
+            var path = $"~/Content/css/{theme}/bundle";
+            return path;
+        }
+
         public Control LoadDefaultPage()
         {
             var theme = GetTheme();
 
-            var page = HttpContext.Current.Handler as Page;
-            if (page == null) return null;
+            if (!(HttpContext.Current.Handler is Page page)) return null;
 
             var defaultControl = page.LoadControl($"~/Content/{theme}/Default.ascx");
 

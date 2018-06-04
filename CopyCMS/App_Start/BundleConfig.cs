@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ namespace CopyCMS
 {
     public class BundleConfig
     {
+
         // Weitere Informationen zur Bündelung finden Sie unter https://go.microsoft.com/fwlink/?LinkID=303951
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -35,7 +37,9 @@ namespace CopyCMS
                             "~/Scripts/modernizr-*"));
 
 
-            bundles.Add(new StyleBundle("~/Content/css").IncludeDirectory("~/Content/test", "*.css"));
+            View.ResourceLoader resourceLoader = ((Global)HttpContext.Current.ApplicationInstance).ContainerProvider.ApplicationContainer.Resolve<View.ResourceLoader>();
+            
+            bundles.Add(new StyleBundle(resourceLoader.GetStyleBundleVirtualPath()).IncludeDirectory($"~/Content/{resourceLoader.GetTheme()}", "*.css"));
         }
     }
 }

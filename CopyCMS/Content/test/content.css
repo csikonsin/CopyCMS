@@ -1,0 +1,12 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    background: #fff;
+    padding: 0;
+    line-height: 140%;
+}
