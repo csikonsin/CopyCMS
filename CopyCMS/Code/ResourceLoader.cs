@@ -9,8 +9,8 @@ namespace CopyCMS.View
 {
     public class ResourceLoader
     {
-        private Service.WebsiteService websiteService;
-        private AppSettings appSettings;
+        private readonly Service.WebsiteService websiteService;
+        private readonly AppSettings appSettings;
 
         public ResourceLoader(AppSettings appSettings, Service.WebsiteService websiteService)
         {

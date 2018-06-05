@@ -158,6 +158,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Modules\Content.ascx" />
     <Content Include="Modules\ModuleLoader.ascx" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -190,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\AppSettings.cs" />
+    <Compile Include="Code\CmsConfig.cs" />
     <Compile Include="Code\ResourceLoader.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -204,6 +206,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Modules\BaseModule.cs" />
+    <Compile Include="Modules\Content.ascx.cs">
+      <DependentUpon>Content.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Content.ascx.designer.cs">
+      <DependentUpon>Content.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\ModuleLoader.ascx.cs">
       <DependentUpon>ModuleLoader.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

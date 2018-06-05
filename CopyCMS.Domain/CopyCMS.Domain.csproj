@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasePoco.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="Website.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

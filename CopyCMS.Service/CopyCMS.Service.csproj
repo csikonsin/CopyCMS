@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,8 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuService.cs" />
     <Compile Include="WebsiteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CopyCMS.Data\CopyCMS.Data.csproj">
+      <Project>{6385ca2a-78f2-45a7-8aa0-628332654d91}</Project>
+      <Name>CopyCMS.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CopyCMS.Domain\CopyCMS.Domain.csproj">
+      <Project>{7ba00739-da05-4901-8cce-da169b3c461d}</Project>
+      <Name>CopyCMS.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

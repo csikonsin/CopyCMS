@@ -11,13 +11,14 @@ namespace CopyCMS.Data
     {
         Guid Id { get; }
         IDbConnection Connection { get; }
-        IDbTransaction Transaction { get;  }
+        IDbTransaction Transaction { get; }
         void Begin();
         void Commit();
         void Rollback();
 
         IWebsiteRepository WebsiteRepository { get; }
-        IModuleRepository ModuleRepository { get;  }
+        IModuleRepository ModuleRepository { get; }
+        IMenuRepository MenuRepository { get;  }
     }
 
     public sealed class UnitOfWork : IUnitOfWork
@@ -47,13 +48,17 @@ namespace CopyCMS.Data
 
         private IWebsiteRepository _websiteRepository;
         private IModuleRepository _moduleRepository;
+        private IMenuRepository _menuRepository;
+
         public IWebsiteRepository WebsiteRepository { get { return _websiteRepository ?? (_websiteRepository = new WebsiteRepository(this)); } }
         public IModuleRepository ModuleRepository { get { return _moduleRepository ?? (_moduleRepository = new ModuleRepository(this)); } }
+        public IMenuRepository MenuRepository { get { return _menuRepository ?? (_menuRepository = new MenuRepository(this)); } }
 
-
-        private void resetRepositories()
+        private void ResetRepositories()
         {
-
+            _websiteRepository = null;
+            _moduleRepository = null;
+            _menuRepository = null;
         }
 
         public void Begin()
@@ -76,9 +81,9 @@ namespace CopyCMS.Data
             {
                 Transaction.Dispose();
                 Transaction = Connection.BeginTransaction();
-                resetRepositories();
+                ResetRepositories();
             }
-            
+
         }
 
         public void Rollback()
@@ -88,11 +93,11 @@ namespace CopyCMS.Data
 
         public void Dispose()
         {
-            dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        private void dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
             if (!_disposed)
             {
@@ -115,7 +120,7 @@ namespace CopyCMS.Data
 
         ~UnitOfWork()
         {
-            dispose(false);
+            Dispose(false);
         }
     }
 }

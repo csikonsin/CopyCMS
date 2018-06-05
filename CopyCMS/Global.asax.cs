@@ -24,13 +24,17 @@ namespace CopyCMS
             }
         }
 
+
         void Application_Start(object sender, EventArgs e)
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<WebsiteService>();
             builder.RegisterType<View.ResourceLoader>();
             builder.RegisterType<View.AppSettings>();
-            builder.RegisterType<BundleConfig>();
+            builder.RegisterType<BundleConfig>();            
+            var httpContext = new HttpContextWrapper(HttpContext.Current);
+            builder.RegisterInstance<HttpContextBase>(httpContext);
+            builder.RegisterType<Service.MenuService>();
 
             var container = builder.Build();
             _containerProvider = new ContainerProvider(container);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,9 +12,21 @@ namespace CopyCMS.Modules
     {
         private ModuleLoaderPresenter presenter;
 
+        public ControlCollection ControlCollection
+        {
+            get
+            {
+                return ph.Controls;
+            }
+        }
+
         public ModuleLoader()
         {
-            presenter = new ModuleLoaderPresenter(this);
+            var provider = ((Global)HttpContext.Current.ApplicationInstance).ContainerProvider;
+
+            Service.MenuService service = provider.RequestLifetime.Resolve<Service.MenuService>();
+
+            presenter = new ModuleLoaderPresenter(this,service);
         }
 
         protected void Page_Load(object sender, EventArgs e)

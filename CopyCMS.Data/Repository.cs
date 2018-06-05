@@ -31,6 +31,14 @@ namespace CopyCMS.Data
             }
         }
 
+        protected IDbConnection Connection
+        {
+            get
+            {
+                return unitOfWork?.Connection;
+            }
+        }
+
         public BaseRepository(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
