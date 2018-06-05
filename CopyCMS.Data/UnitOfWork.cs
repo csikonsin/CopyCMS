@@ -17,6 +17,7 @@ namespace CopyCMS.Data
         void Rollback();
 
         IWebsiteRepository WebsiteRepository { get; }
+        IModuleRepository ModuleRepository { get;  }
     }
 
     public sealed class UnitOfWork : IUnitOfWork
@@ -45,7 +46,9 @@ namespace CopyCMS.Data
         private bool _disposed;
 
         private IWebsiteRepository _websiteRepository;
+        private IModuleRepository _moduleRepository;
         public IWebsiteRepository WebsiteRepository { get { return _websiteRepository ?? (_websiteRepository = new WebsiteRepository(this)); } }
+        public IModuleRepository ModuleRepository { get { return _moduleRepository ?? (_moduleRepository = new ModuleRepository(this)); } }
 
 
         private void resetRepositories()
@@ -78,13 +81,10 @@ namespace CopyCMS.Data
             
         }
 
-
-
         public void Rollback()
         {
             Transaction.Rollback();
         }
-
 
         public void Dispose()
         {
@@ -119,4 +119,3 @@ namespace CopyCMS.Data
         }
     }
 }
-

@@ -12,5 +12,6 @@ namespace CopyCMS.Modules
 
     public class BaseModule : IBaseModule
     {
+
     }
 }
