@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="ContentRepository.cs" />
     <Compile Include="DapperExtensionsInit.cs" />
     <Compile Include="MenuRepository.cs" />
     <Compile Include="ModuleRepository.cs" />

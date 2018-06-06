@@ -15,14 +15,15 @@ namespace CopyCMS.Modules
     {
         private IModuleLoaderView view;
         private readonly Service.MenuService menuService;
+        private readonly HttpContextBase httpContext;
 
-
-        public ModuleLoaderPresenter(IModuleLoaderView view, Service.MenuService menuService)
+        public ModuleLoaderPresenter(IModuleLoaderView view, Service.MenuService menuService, HttpContextBase httpContext)
         {
             if (view == null) throw new ArgumentException("View must be set!");
 
             this.view = view;
             this.menuService = menuService;
+            this.httpContext = httpContext;
         }
 
         public void Initialize()
@@ -72,9 +73,25 @@ namespace CopyCMS.Modules
 
             foreach (var module in modules)
             {
+                if (!Code.CmsConfig.CmsModules.ContainsKey(module.ModuleId))
+                {
+                    controls.Add(new LiteralControl() { Text = $"Module with id={module.ModuleId} was not found!" });
+                    continue;
+                }
 
+                var cmsModule = Code.CmsConfig.CmsModules[module.ModuleId];
+
+                var p = HttpContext.Current.Handler as Page;
+                var cmsControl = p.LoadControl(cmsModule.ControlPath);
+                ((IBaseModule)cmsControl).Module = module;
+
+                var wrapper = p.LoadControl("~/Modules/BaseModuleWrapper.ascx");
+                ((BaseModuleWrapper)wrapper).CmsModule = cmsModule;((BaseModuleWrapper)wrapper).CmsModule = cmsModule;
+                ((BaseModuleWrapper)wrapper).Module= module;
+                wrapper.FindControl("ph").Controls.Add(cmsControl);
+             
+                controls.Add(wrapper);
             }
-
 
             return controls;
         }

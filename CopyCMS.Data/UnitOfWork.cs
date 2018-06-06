@@ -19,6 +19,8 @@ namespace CopyCMS.Data
         IWebsiteRepository WebsiteRepository { get; }
         IModuleRepository ModuleRepository { get; }
         IMenuRepository MenuRepository { get;  }
+
+        IContentRepository ContentRepository { get; }
     }
 
     public sealed class UnitOfWork : IUnitOfWork
@@ -49,16 +51,20 @@ namespace CopyCMS.Data
         private IWebsiteRepository _websiteRepository;
         private IModuleRepository _moduleRepository;
         private IMenuRepository _menuRepository;
+        private IContentRepository _contentRepository;
 
         public IWebsiteRepository WebsiteRepository { get { return _websiteRepository ?? (_websiteRepository = new WebsiteRepository(this)); } }
         public IModuleRepository ModuleRepository { get { return _moduleRepository ?? (_moduleRepository = new ModuleRepository(this)); } }
         public IMenuRepository MenuRepository { get { return _menuRepository ?? (_menuRepository = new MenuRepository(this)); } }
+
+        public IContentRepository ContentRepository {  get { return _contentRepository ?? (_contentRepository = new ContentRepository(this)); } }
 
         private void ResetRepositories()
         {
             _websiteRepository = null;
             _moduleRepository = null;
             _menuRepository = null;
+            _contentRepository = null;
         }
 
         public void Begin()

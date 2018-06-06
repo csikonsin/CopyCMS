@@ -145,6 +145,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Test.mdf" />
+    <Content Include="App_Data\Test_log.ldf">
+      <DependentUpon>Test.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\test\Default.ascx" />
     <Content Include="Content\test\reset.css" />
     <Content Include="Content\test\content.css" />
@@ -158,6 +162,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Modules\BaseModuleWrapper.ascx" />
     <Content Include="Modules\Content.ascx" />
     <Content Include="Modules\ModuleLoader.ascx" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -206,6 +211,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Modules\BaseModule.cs" />
+    <Compile Include="Modules\BaseModuleWrapper.ascx.cs">
+      <DependentUpon>BaseModuleWrapper.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\BaseModuleWrapper.ascx.designer.cs">
+      <DependentUpon>BaseModuleWrapper.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Content.ascx.cs">
       <DependentUpon>Content.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

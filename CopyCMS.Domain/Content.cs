@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace CopyCMS.Domain
 {
-    public class Website : BasePoco
+    public class Content : BasePoco
     {
-        public string Name { get; set; }
-
-        public string Theme { get; set; }
+        public string Text { get; set; }
     }
 }

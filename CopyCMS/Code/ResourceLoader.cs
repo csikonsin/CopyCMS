@@ -24,7 +24,7 @@ namespace CopyCMS.View
             {
                 var theme = work.WebsiteRepository.GetById(appSettings.WebsiteId);
 
-                return theme.Name;
+                return theme.Theme;
             }
         }
 

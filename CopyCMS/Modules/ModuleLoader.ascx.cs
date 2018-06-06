@@ -25,8 +25,9 @@ namespace CopyCMS.Modules
             var provider = ((Global)HttpContext.Current.ApplicationInstance).ContainerProvider;
 
             Service.MenuService service = provider.RequestLifetime.Resolve<Service.MenuService>();
+            HttpContextBase httpContext = provider.RequestLifetime.Resolve<HttpContextBase>();
 
-            presenter = new ModuleLoaderPresenter(this,service);
+            presenter = new ModuleLoaderPresenter(this, service, httpContext);
         }
 
         protected void Page_Load(object sender, EventArgs e)

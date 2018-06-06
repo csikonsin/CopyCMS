@@ -10,15 +10,24 @@
 namespace CopyCMS.Modules {
     
     
-    public partial class Content {
+    public partial class BaseModuleWrapper {
         
         /// <summary>
-        /// content control.
+        /// pnModule control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal content;
+        protected global::System.Web.UI.WebControls.Panel pnModule;
+        
+        /// <summary>
+        /// ph control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder ph;
     }
 }

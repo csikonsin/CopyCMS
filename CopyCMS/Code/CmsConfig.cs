@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CopyCMS.Modules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,31 +8,39 @@ namespace CopyCMS.Code
 {
     public  class CmsConfig
     {
-        public static List<CmsModule<IBaseModule>> CmsModules { get; protected set; }
+        public static Dictionary<int, CmsModule> CmsModules { get; protected set; }
 
         public CmsConfig()
         {
             InitModules();
         }
 
-        private void InitModules()
+        public static void InitModules()
         {
-            if (CmsModules != null || CmsModules.Count > 0) return;
+            if (CmsModules != null || CmsModules?.Count > 0) return;
 
-            CmsModules = new List<CmsModule<IBaseModule>>();
+            CmsModules = new Dictionary<int, CmsModule>();
 
-            CmsModules.Add(new CmsModule<Modules.Content>
+            CmsModules.Add(1, new CmsModule()
             {
-                ModuleId = 1,
+                ControlPath = "~/Modules/Content.ascx",
                 EditorPath = "~/Modules/edit_content.aspx",
+                ParameterType = typeof(ContentParameter),
+                CssClass = "content"
             });
 
         }
     }
 
-    public class CmsModule<T> where T: IBaseModule
+    public class CmsModule
     {
         public int ModuleId { get; set; }
-        public string EditorPath { get; set; }        
+
+        public string ControlPath { get; set; }
+        public string EditorPath { get; set; }
+
+        public Type ParameterType { get; set; }
+
+        public string CssClass { get; set; }
     }
 }

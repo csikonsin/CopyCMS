@@ -45,6 +45,8 @@ namespace CopyCMS
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             container.Resolve<BundleConfig>().RegisterBundles(BundleTable.Bundles);
+
+            CopyCMS.Code.CmsConfig.InitModules();
         }
     }
 }
