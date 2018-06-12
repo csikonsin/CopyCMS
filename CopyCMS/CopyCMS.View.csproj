@@ -197,6 +197,8 @@
   <ItemGroup>
     <Compile Include="Code\AppSettings.cs" />
     <Compile Include="Code\CmsConfig.cs" />
+    <Compile Include="Code\ModuleParameters\BaseParameter.cs" />
+    <Compile Include="Code\ModuleParameters\ContentParameter.cs" />
     <Compile Include="Code\ResourceLoader.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

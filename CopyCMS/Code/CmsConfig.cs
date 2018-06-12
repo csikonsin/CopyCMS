@@ -25,7 +25,7 @@ namespace CopyCMS.Code
             {
                 ControlPath = "~/Modules/Content.ascx",
                 EditorPath = "~/Modules/edit_content.aspx",
-                ParameterType = typeof(ContentParameter),
+                ParameterType = typeof(ModuleParameters.ContentParameter),
                 CssClass = "content"
             });
 

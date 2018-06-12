@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CopyCMS.Code.ModuleParameters;
+using CopyCMS.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,26 +9,57 @@ using System.Web.UI.WebControls;
 
 namespace CopyCMS.Modules
 {
-    public partial class Content : System.Web.UI.UserControl, IBaseModule
+    public partial class Content : System.Web.UI.UserControl, IBaseModule, IContentView
     {
-        public Domain.Module Module { get; set; }
+        ContentPresenter presenter;
 
-        public Content()
+        public void SetParameter(BaseParameter parameter)
         {
-         
+            presenter = new ContentPresenter(this, (ContentParameter)parameter);
         }
+
+        public string Text
+        {
+            get
+            {
+                return content.Text;
+            }
+            set
+            {
+                content.Text = value;
+            }
+        }
+       
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (var work = new Data.UnitOfWork())
+            presenter.Initalize();
+        }
+    }
+
+    public interface IContentView
+    {
+        string Text { get; set; }
+    }
+
+
+    public class ContentPresenter
+    {
+        IContentView view;
+        ContentParameter parameter;
+        public ContentPresenter(IContentView view, ContentParameter parameter)
+        {
+            this.view = view ?? throw new ArgumentException();
+            this.parameter = parameter;
+        }
+
+        public void Initalize()
+        {
+            using (var work = new UnitOfWork())
             {
-                var text = work.ContentRepository.GetById(Convert.ToInt32(Module.Settings));
-                content.Text = text.Text;
+                view.Text = work.ContentRepository.GetById(parameter.ContentId).Text;
             }
         }
     }
 
-    public class ContentParameter
-    {
-
-    }
 }

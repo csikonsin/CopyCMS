@@ -19,9 +19,7 @@ namespace CopyCMS.Modules
 
         public ModuleLoaderPresenter(IModuleLoaderView view, Service.MenuService menuService, HttpContextBase httpContext)
         {
-            if (view == null) throw new ArgumentException("View must be set!");
-
-            this.view = view;
+            this.view = view ?? throw new ArgumentException("View must be set!");
             this.menuService = menuService;
             this.httpContext = httpContext;
         }
@@ -71,6 +69,7 @@ namespace CopyCMS.Modules
 
             var controls = new List<Control>();
 
+
             foreach (var module in modules)
             {
                 if (!Code.CmsConfig.CmsModules.ContainsKey(module.ModuleId))
@@ -83,11 +82,11 @@ namespace CopyCMS.Modules
 
                 var p = HttpContext.Current.Handler as Page;
                 var cmsControl = p.LoadControl(cmsModule.ControlPath);
-                ((IBaseModule)cmsControl).Module = module;
+                var parameter = ParameterBuilder.Deserialize(module.Settings, cmsModule.ParameterType);
+                ((IBaseModule)cmsControl).SetParameter(parameter);
 
                 var wrapper = p.LoadControl("~/Modules/BaseModuleWrapper.ascx");
-                ((BaseModuleWrapper)wrapper).CmsModule = cmsModule;((BaseModuleWrapper)wrapper).CmsModule = cmsModule;
-                ((BaseModuleWrapper)wrapper).Module= module;
+                ((BaseModuleWrapper)wrapper).CmsModule = cmsModule;
                 wrapper.FindControl("ph").Controls.Add(cmsControl);
              
                 controls.Add(wrapper);
@@ -95,6 +94,5 @@ namespace CopyCMS.Modules
 
             return controls;
         }
-
     }
 }

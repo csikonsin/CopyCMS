@@ -9,7 +9,6 @@ namespace CopyCMS.Modules
 {
     public partial class BaseModuleWrapper : System.Web.UI.UserControl
     {
-        public Domain.Module Module { get; set; }
         public CopyCMS.Code.CmsModule CmsModule { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
