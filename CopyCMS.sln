@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyCMS.Service", "CopyCMS.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyCMS.Domain", "CopyCMS.Domain\CopyCMS.Domain.csproj", "{7BA00739-DA05-4901-8CCE-DA169B3C461D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyCMS.Tests", "CopyCMS.Tests\CopyCMS.Tests.csproj", "{15536CD0-E137-46A4-A5F3-372D173FAD4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7BA00739-DA05-4901-8CCE-DA169B3C461D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BA00739-DA05-4901-8CCE-DA169B3C461D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BA00739-DA05-4901-8CCE-DA169B3C461D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15536CD0-E137-46A4-A5F3-372D173FAD4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15536CD0-E137-46A4-A5F3-372D173FAD4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15536CD0-E137-46A4-A5F3-372D173FAD4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15536CD0-E137-46A4-A5F3-372D173FAD4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,6 +15,10 @@ namespace CopyCMS
 
     public static class ParameterBuilder
     {
+        public static T Deserialize<T>(string settings) where T: BaseParameter
+        {
+            return (T)Deserialize(settings, typeof(T));
+        }
         public static BaseParameter Deserialize(string settings, Type type)
         {
             BaseParameter result = null;
@@ -29,7 +33,6 @@ namespace CopyCMS
             }
             catch (Exception)
             {
-                throw;
             }
 
             return result;
@@ -49,7 +52,6 @@ namespace CopyCMS
             }
             catch (Exception)
             {
-                throw;
             }
             return result;
         }
